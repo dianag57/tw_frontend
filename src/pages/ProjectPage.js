@@ -259,7 +259,7 @@ const ProjectPage = () => {
 
               {expandedProject === project.id && (
                 <div className="project-details">
-                  <h3>Livrări</h3>
+                  <h3>Livrabil</h3>
                   {project.Deliverables && project.Deliverables.length > 0 ? (
                     <div className="deliverables-list">
                       {project.Deliverables.map(deliverable => (
