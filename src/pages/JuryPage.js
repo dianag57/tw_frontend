@@ -89,7 +89,7 @@ const JuryPage = () => {
   return (
     <div className="container">
       <div className="jury-header">
-        <h1>Atribuiri Jury</h1>
+        <h1>Atribuiri Juriu</h1>
         <p>Evaluează anonim proiectele atribuite ție</p>
       </div>
 
