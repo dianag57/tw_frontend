@@ -7,7 +7,6 @@ import React, { useState, useEffect } from 'react';
 import {
   getAllProjects,
   getProjectEvaluations,
-  getDeliverableStats,
 } from '../services/professorService';
 import { formatDate, formatDateTime } from '../utils/dateUtils';
 import './ProfessorPage.css';
