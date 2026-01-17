@@ -117,7 +117,7 @@ const JuryPage = () => {
                   <p>
                     <strong>Deadline:</strong> {formatDate(assignment.deliverable?.dueDate)}
                     {isDeadlinePassed && <span style={{color: '#d63031', marginLeft: '0.5rem', fontWeight: 'bold'}}>❌ Deadline a expirat!</span>}
-                    {isDeadlineClose && !isDeadlinePassed && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
+                    {isDeadlineClose && !isDeadlinePassed && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Scadența e aproape!</span>}
                   </p>
                   <span className={`status status-${assignment.status}`}>
                     {assignment.status === 'assigned' ? 'În Așteptare Evaluare' : 'Evaluat'}
