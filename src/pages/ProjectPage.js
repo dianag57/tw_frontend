@@ -33,6 +33,7 @@ const ProjectPage = () => {
   });
   const [jurySizes, setJurySizes] = useState({});
   const [finalGrades, setFinalGrades] = useState({});
+  const [projectGrades, setProjectGrades] = useState({});
 
   /**
    * Load projects on component mount
@@ -167,6 +168,54 @@ const ProjectPage = () => {
   };
 
   /**
+   * Get project grade (average of all deliverables)
+   */
+  const handleGetProjectGrade = async (projectId) => {
+    try {
+      setError('');
+      const project = projects.find(p => p.id === projectId);
+      if (!project || !project.Deliverables || project.Deliverables.length === 0) {
+        setError('Nu sunt livrabile pentru acest proiect');
+        return;
+      }
+
+      // Calculate average grade from deliverables
+      let totalGrade = 0;
+      let gradesCount = 0;
+      let allGrades = [];
+
+      for (const deliverable of project.Deliverables) {
+        try {
+          const data = await getFinalGrade(deliverable.id);
+          if (data.gradeInfo && data.gradeInfo.finalGrade) {
+            totalGrade += parseFloat(data.gradeInfo.finalGrade);
+            gradesCount++;
+            allGrades.push({
+              title: deliverable.title,
+              grade: data.gradeInfo.finalGrade,
+            });
+          }
+        } catch (err) {
+          // Skip deliverables without grades
+        }
+      }
+
+      const averageGrade = gradesCount > 0 ? (totalGrade / gradesCount).toFixed(2) : null;
+
+      setProjectGrades(prev => ({
+        ...prev,
+        [projectId]: {
+          averageGrade,
+          deliverableGrades: allGrades,
+          totalEvaluated: gradesCount,
+        },
+      }));
+    } catch (err) {
+      setError('Nu s-a putut obține nota proiectului');
+    }
+  };
+
+  /**
    * Delete project
    */
   const handleDeleteProject = async (projectId) => {
@@ -250,6 +299,12 @@ const ProjectPage = () => {
                     {expandedProject === project.id ? '▼' : '▶'} Detalii
                   </button>
                   <button
+                    className="btn btn-info"
+                    onClick={() => handleGetProjectGrade(project.id)}
+                  >
+                    Nota Proiect
+                  </button>
+                  <button
                     className="btn btn-danger"
                     onClick={() => handleDeleteProject(project.id)}
                   >
@@ -260,6 +315,30 @@ const ProjectPage = () => {
 
               {expandedProject === project.id && (
                 <div className="project-details">
+                  {projectGrades[project.id] && (
+                    <div className="project-grade-display" style={{
+                      padding: '1rem',
+                      backgroundColor: '#f0f8ff',
+                      borderRadius: '8px',
+                      marginBottom: '1.5rem',
+                      borderLeft: '4px solid #2c3e50',
+                    }}>
+                      <h3>Nota Proiect</h3>
+                      <p style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#2c3e50' }}>
+                        Medie: <span style={{ color: '#27ae60', fontSize: '1.5rem' }}>{projectGrades[project.id].averageGrade}</span>
+                      </p>
+                      {projectGrades[project.id].deliverableGrades.length > 0 && (
+                        <div>
+                          <p><strong>Note pe livrabile ({projectGrades[project.id].totalEvaluated}):</strong></p>
+                          <ul style={{ marginTop: '0.5rem' }}>
+                            {projectGrades[project.id].deliverableGrades.map((dg, idx) => (
+                              <li key={idx}>{dg.title}: <strong>{dg.grade}</strong></li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  )}
                   <h3>Livrabil</h3>
                   {project.Deliverables && project.Deliverables.length > 0 ? (
                     <div className="deliverables-list">
