@@ -32,8 +32,6 @@
 .project-review-header {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(135deg, #c94c7f 30%, #340f58 70%);
-  color: rgb(218, 179, 247);
   align-items: flex-start;
   gap: 1rem;
 }
@@ -69,8 +67,6 @@
 .deliverable-review-header {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(135deg, #c94c7f 30%, #340f58 70%);
-  color: rgb(218, 179, 247);
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 1rem;
