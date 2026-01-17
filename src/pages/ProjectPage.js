@@ -274,6 +274,13 @@ const ProjectPage = () => {
                             <strong>Scadenţă:</strong> {formatDate(deliverable.dueDate)}
                             {isDeadlineClose && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
                           </p>
+                          {deliverable.description && <p><strong>Descriere:</strong> {deliverable.description}</p>}
+                          {deliverable.videoUrl && (
+                            <p><strong>Video:</strong> <a href={deliverable.videoUrl} target="_blank" rel="noopener noreferrer">{deliverable.videoUrl}</a></p>
+                          )}
+                          {deliverable.serverUrl && (
+                            <p><strong>Server:</strong> <a href={deliverable.serverUrl} target="_blank" rel="noopener noreferrer">{deliverable.serverUrl}</a></p>
+                          )}
                           <div className="deliverable-actions">
                             {deliverable.status === 'pending' && (
                               <button
