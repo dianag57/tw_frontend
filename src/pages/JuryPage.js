@@ -102,13 +102,20 @@ const JuryPage = () => {
         </div>
       ) : (
         <div className="assignments-list">
-          {assignments.map(assignment => (
+          {assignments.map(assignment => {
+            const daysUntilDeadline = Math.ceil((new Date(assignment.deliverable?.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
+            const isDeadlineClose = daysUntilDeadline <= 3 && daysUntilDeadline > 0;
+            
+            return (
             <div key={assignment.id} className="assignment-card card">
               <div className="assignment-header">
                 <div>
                   <h2>{assignment.deliverable?.project?.title}</h2>
                   <p><strong>Titlu:</strong> {assignment.deliverable?.title}</p>
-                  <p><strong>Deadline:</strong> {formatDate(assignment.deliverable?.dueDate)}</p>
+                  <p>
+                    <strong>Deadline:</strong> {formatDate(assignment.deliverable?.dueDate)}
+                    {isDeadlineClose && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
+                  </p>
                   <span className={`status status-${assignment.status}`}>
                     {assignment.status === 'assigned' ? 'În Așteptare Evaluare' : 'Evaluat'}
                   </span>
@@ -198,7 +205,8 @@ const JuryPage = () => {
                 </div>
               )}
             </div>
-          ))}
+          );
+          })}
         </div>
       )}
     </div>

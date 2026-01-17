@@ -412,8 +412,16 @@ const ProjectPage = () => {
                           type="date"
                           value={deliverableForm.dueDate}
                           onChange={(e) => setDeliverableForm({ ...deliverableForm, dueDate: e.target.value })}
+                          min={new Date().toISOString().split('T')[0]}
                           required
                         />
+                        {deliverableForm.dueDate && (() => {
+                          const daysUntilDeadline = Math.ceil((new Date(deliverableForm.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
+                          if (daysUntilDeadline <= 3 && daysUntilDeadline > 0) {
+                            return <p style={{color: '#ff6b6b', fontSize: '0.9rem', marginTop: '0.5rem'}}>⚠️ Deadline is close ({daysUntilDeadline} day{daysUntilDeadline !== 1 ? 's' : ''} away)</p>;
+                          }
+                          return null;
+                        })()}
                       </div>
                       <button
                         className="btn btn-success"
