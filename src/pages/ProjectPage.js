@@ -324,7 +324,7 @@ const ProjectPage = () => {
                                 Deschis pentru notare
                               </button>
                             )}
-                            {deliverable.status === 'open_for_grading' && (
+                            {deliverable.status === 'open_for_grading' && (!deliverable.JuryAssignments || deliverable.JuryAssignments.length === 0) && (
                               <>
                                 <div className="form-group" style={{ marginBottom: '10px' }}>
                                   <label>Număr de jurați</label>
