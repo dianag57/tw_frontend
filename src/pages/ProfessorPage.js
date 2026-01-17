@@ -94,6 +94,20 @@ const ProfessorPage = () => {
 
               {expandedProject === project.id && evaluationData[project.id] && (
                 <div className="project-review-details">
+                  {evaluationData[project.id].projectAverage && (
+                    <div className="project-average-grade" style={{
+                      padding: '1rem',
+                      backgroundColor: '#f0f8ff',
+                      borderRadius: '8px',
+                      marginBottom: '1.5rem',
+                      borderLeft: '4px solid #2c3e50',
+                    }}>
+                      <h3>Nota Proiect</h3>
+                      <p style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#2c3e50' }}>
+                        Medie: <span style={{ color: '#27ae60', fontSize: '1.5rem' }}>{evaluationData[project.id].projectAverage}</span>
+                      </p>
+                    </div>
+                  )}
                   {evaluationData[project.id].evaluations.map(delivEval => (
                     <div key={delivEval.deliverable.id} className="deliverable-review">
                       <div className="deliverable-review-header">
