@@ -1,5 +1,8 @@
 .dashboard {
   animation: fadeIn 0.5s ease-in;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 @keyframes fadeIn {
