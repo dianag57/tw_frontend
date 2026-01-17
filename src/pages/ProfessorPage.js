@@ -1,8 +1,3 @@
-/**
- * Professor Page
- * Professor view of all project evaluations
- */
-
 import React, { useState, useEffect } from 'react';
 import {
   getAllProjects,
@@ -35,7 +30,7 @@ const ProfessorPage = () => {
       const data = await getAllProjects();
       setProjects(data.projects || []);
     } catch (err) {
-      setError('Failed to load projects');
+      setError('Nu s-au putut încărca proiectele');
       console.error(err);
     } finally {
       setLoading(false);
@@ -54,7 +49,7 @@ const ProfessorPage = () => {
         [projectId]: data,
       }));
     } catch (err) {
-      setError('Failed to load evaluations');
+      setError('Nu s-au putut încărca evaluările');
     }
   };
 
@@ -65,15 +60,15 @@ const ProfessorPage = () => {
   return (
     <div className="container">
       <div className="professor-header">
-        <h1>📊 Tablou de Bord Profesor</h1>
-        <p>Evaluări Anonime Proiecte</p>
+        <h1>Vizualizare Evaluări</h1>
+        <p>Evaluări anonime proiecte</p>
       </div>
 
       {error && <div className="alert alert-danger">{error}</div>}
 
       {projects.length === 0 ? (
         <div className="card">
-          <p>Nicio proiect activ de revizuit încă.</p>
+          <p>Nu există proiecte de revizuit încă.</p>
         </div>
       ) : (
         <div className="projects-review">
@@ -117,13 +112,12 @@ const ProfessorPage = () => {
                       </div>
 
                       <div className="evaluations-list">
-                        <h4>Individual Evaluations (Anonymous)</h4>
+                        <h4>Evaluări individuale</h4>
                         {delivEval.evaluations.length > 0 ? (
                           <table>
                             <thead>
                               <tr>
                                 <th>Score</th>
-                                <th>Submitted</th>
                                 <th>Feedback</th>
                               </tr>
                             </thead>
@@ -135,14 +129,13 @@ const ProfessorPage = () => {
                                       {evaluation.score}
                                     </span>
                                   </td>
-                                  <td>{formatDateTime(evaluation.createdAt)}</td>
                                   <td>{evaluation.feedback ? evaluation.feedback.substring(0, 50) + '...' : '-'}</td>
                                 </tr>
                               ))}
                             </tbody>
                           </table>
                         ) : (
-                          <p>No evaluations yet.</p>
+                          <p>Nu există evaluări încă.</p>
                         )}
                       </div>
                     </div>
