@@ -3,7 +3,7 @@ import {
   getAllProjects,
   getProjectEvaluations,
 } from '../services/professorService';
-import { formatDate, formatDateTime } from '../utils/dateUtils';
+import { formatDate } from '../utils/dateUtils';
 import './ProfessorPage.css';
 
 const ProfessorPage = () => {
