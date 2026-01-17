@@ -1,0 +1,170 @@
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+.projects-header h1 {
+  margin: 0;
+  color: rgb(212, 188, 230);
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.project-actions .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.project-header h2 {
+  margin: 0 0 0.5rem 0;
+  color: #392c50;
+}
+
+.project-header p {
+  color: #666666;
+  margin: 0;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.status-draft {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-completed {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+.project-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.project-details h3 {
+  margin-top: 0;
+}
+
+.deliverables-list {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.deliverable-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: rgb(224, 204, 231);
+  border: 1px solid #ecf0f1;
+  border-radius: 4px;
+}
+
+.deliverable-item:last-child {
+  margin-bottom: 0;
+}
+
+.deliverable-item h4 {
+  margin: 0 0 0.5rem 0;
+  color: #3a2c50;
+}
+
+.deliverable-item p {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.deliverable-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.deliverable-actions .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.deliverable-form {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.deliverable-form h4 {
+  margin-top: 0;
+}
+
+.grade-display {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #e8f5e9;
+  border-left: 4px solid #27ae60;
+  border-radius: 4px;
+}
+
+.grade-display p {
+  margin: 0.5rem 0;
+  color: #1b5e20;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-header {
+    flex-direction: column;
+  }
+
+  .deliverable-actions {
+    flex-direction: column;
+  }
+
+  .deliverable-actions .btn {
+    width: 100%;
+  }
+}

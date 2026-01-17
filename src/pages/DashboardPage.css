@@ -1,0 +1,91 @@
+.dashboard {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-header {
+  text-align: center;
+  margin: 2rem 0 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #c94c7f 30%, #340f58 70%);
+  color: rgb(218, 179, 247);
+  border-radius: 8px;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.dashboard-card {
+  background: rgb(194, 143, 227);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card h3 {
+  margin-top: 0;
+  color: #33105b;
+  font-size: 1.3rem;
+}
+
+.dashboard-card p {
+  flex-grow: 1;
+  color: rgb(140, 37, 149)05b;
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.dashboard-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+  background-color: #c94c7f;
+  color: rgb(231, 210, 243) ;
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 1.5rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

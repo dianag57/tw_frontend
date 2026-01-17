@@ -1,0 +1,187 @@
+.jury-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #30166b 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+}
+
+.jury-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.jury-header p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.assignments-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.assignment-card {
+  transition: all 0.3s ease;
+}
+
+.assignment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.assignment-header h2 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.assignment-header p {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.status-assigned {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-submitted {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.assignment-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.deliverable-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.deliverable-links .btn {
+  padding: 0.75rem 1.5rem;
+}
+
+.evaluation-form-section {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.evaluation-form-section h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.score-input {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.score-input input {
+  max-width: 150px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.score-display {
+  display: flex;
+  align-items: center;
+}
+
+.score-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.score-1,
+.score-2,
+.score-3,
+.score-4 {
+  background-color: #e74c3c;
+}
+
+.score-5,
+.score-6 {
+  background-color: #f39c12;
+}
+
+.score-7,
+.score-8 {
+  background-color: #27ae60;
+}
+
+.score-9,
+.score-10 {
+  background-color: #16a085;
+}
+
+.previous-evaluation {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #d1ecf1;
+  border: 1px solid #bee5eb;
+  border-radius: 4px;
+  color: #0c5460;
+}
+
+.previous-evaluation h4 {
+  margin-top: 0;
+}
+
+.previous-evaluation p {
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .jury-header {
+    padding: 1.5rem;
+  }
+
+  .jury-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .assignment-header {
+    flex-direction: column;
+  }
+
+  .score-input {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .deliverable-links {
+    flex-direction: column;
+  }
+
+  .deliverable-links .btn {
+    width: 100%;
+  }
+}

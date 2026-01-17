@@ -1,0 +1,272 @@
+/**
+ * Professor Page Styles
+ */
+
+.professor-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+}
+
+.professor-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.professor-header p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.projects-review {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.project-review-card {
+  transition: all 0.3s ease;
+}
+
+.project-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.project-review-header h2 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.created-by {
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.project-review-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.deliverable-review {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.deliverable-review:last-child {
+  margin-bottom: 0;
+}
+
+.deliverable-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.deliverable-review-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.deliverable-review-header p {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.grade-summary {
+  display: flex;
+  align-items: center;
+}
+
+.final-grade {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.final-grade.grade-1,
+.final-grade.grade-2,
+.final-grade.grade-3,
+.final-grade.grade-4 {
+  background-color: #e74c3c;
+}
+
+.final-grade.grade-5,
+.final-grade.grade-6 {
+  background-color: #f39c12;
+}
+
+.final-grade.grade-7,
+.final-grade.grade-8 {
+  background-color: #27ae60;
+}
+
+.final-grade.grade-9,
+.final-grade.grade-10 {
+  background-color: #16a085;
+}
+
+.deliverable-stats {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #ecf0f1;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-box {
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.stat-box h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.stat-value {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.score-distribution-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.score-distribution-section h4 {
+  margin-top: 0;
+}
+
+.score-distribution {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.distribution-bar {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bar-label {
+  text-align: right;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.bar-container {
+  height: 30px;
+  background-color: #ecf0f1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+.bar-count {
+  text-align: left;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.evaluations-list {
+  margin-top: 1rem;
+}
+
+.evaluations-list h4 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.evaluations-list table {
+  width: 100%;
+  margin: 1rem 0 0 0;
+}
+
+.score-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.score-badge.score-1,
+.score-badge.score-2,
+.score-badge.score-3,
+.score-badge.score-4 {
+  background-color: #e74c3c;
+}
+
+.score-badge.score-5,
+.score-badge.score-6 {
+  background-color: #f39c12;
+}
+
+.score-badge.score-7,
+.score-badge.score-8 {
+  background-color: #27ae60;
+}
+
+.score-badge.score-9,
+.score-badge.score-10 {
+  background-color: #16a085;
+}
+
+@media (max-width: 768px) {
+  .professor-header {
+    padding: 1.5rem;
+  }
+
+  .professor-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .deliverable-review-header {
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .distribution-bar {
+    grid-template-columns: 30px 1fr 30px;
+  }
+}
