@@ -262,11 +262,18 @@ const ProjectPage = () => {
                   <h3>Livrabil</h3>
                   {project.Deliverables && project.Deliverables.length > 0 ? (
                     <div className="deliverables-list">
-                      {project.Deliverables.map(deliverable => (
+                      {project.Deliverables.map(deliverable => {
+                        const daysUntilDeadline = Math.ceil((new Date(deliverable.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
+                        const isDeadlineClose = daysUntilDeadline <= 3 && daysUntilDeadline > 0;
+                        
+                        return (
                         <div key={deliverable.id} className="deliverable-item">
                           <h4>{deliverable.title}</h4>
                           <p><strong>Stare:</strong> {deliverable.status}</p>
-                          <p><strong>Scadenţă:</strong> {formatDate(deliverable.dueDate)}</p>
+                          <p>
+                            <strong>Scadenţă:</strong> {formatDate(deliverable.dueDate)}
+                            {isDeadlineClose && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
+                          </p>
                           <div className="deliverable-actions">
                             {deliverable.status === 'pending' && (
                               <button
@@ -370,7 +377,8 @@ const ProjectPage = () => {
                             </div>
                           )}
                         </div>
-                      ))}
+                        );
+                        })}
                     </div>
                   ) : (
                     <p>Nu ai livrabile încă.</p>
