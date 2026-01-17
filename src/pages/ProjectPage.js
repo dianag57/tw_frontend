@@ -354,7 +354,7 @@ const ProjectPage = () => {
                           <p>
                             <strong>Scadenţă:</strong> {formatDate(deliverable.dueDate)}
                             {isDeadlinePassed && <span style={{color: '#d63031', marginLeft: '0.5rem', fontWeight: 'bold'}}>❌ Deadline a expirat!</span>}
-                            {isDeadlineClose && !isDeadlinePassed && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Scadența e aproape!</span>}
+                            {isDeadlineClose && !isDeadlinePassed && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Scadența se apropie!</span>}
                           </p>
                           {deliverable.description && <p><strong>Descriere:</strong> {deliverable.description}</p>}
                           {deliverable.videoUrl && (
@@ -533,7 +533,7 @@ const ProjectPage = () => {
                         {deliverableForm.dueDate && (() => {
                           const daysUntilDeadline = Math.ceil((new Date(deliverableForm.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
                           if (daysUntilDeadline <= 3 && daysUntilDeadline > 0) {
-                            return <p style={{color: '#ff6b6b', fontSize: '0.9rem', marginTop: '0.5rem'}}>⚠️ Scadența e aproape ({daysUntilDeadline} zi{daysUntilDeadline !== 1 ? 'le' : ''})</p>;
+                            return <p style={{color: '#ff6b6b', fontSize: '0.9rem', marginTop: '0.5rem'}}>⚠️ Scadența se apropie ({daysUntilDeadline} zi{daysUntilDeadline !== 1 ? 'le' : ''})</p>;
                           }
                           return null;
                         })()}
