@@ -32,6 +32,7 @@ const JuryPage = () => {
       setLoading(true);
       setError('');
       const data = await getJuryAssignments();
+      console.log('Jury assignments loaded:', data.assignments);
       setAssignments(data.assignments || []);
     } catch (err) {
       setError('Failed to load jury assignments');
