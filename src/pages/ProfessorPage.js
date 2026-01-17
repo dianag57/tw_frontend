@@ -58,24 +58,6 @@ const ProfessorPage = () => {
       setError('Failed to load evaluations');
     }
   };
-      <div className="score-distribution">
-        {Object.keys(distribution)
-          .sort((a, b) => a - b)
-          .map(score => (
-            <div key={score} className="distribution-bar">
-              <div className="bar-label">{score}</div>
-              <div className="bar-container">
-                <div
-                  className="bar-fill"
-                  style={{ width: `${(distribution[score] / scores.length) * 100}%` }}
-                ></div>
-              </div>
-              <div className="bar-count">{distribution[score]}</div>
-            </div>
-          ))}
-      </div>
-    );
-  };
 
   if (loading) {
     return <div className="container"><div className="loading"><div className="spinner"></div></div></div>;
