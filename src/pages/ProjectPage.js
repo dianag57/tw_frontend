@@ -31,7 +31,7 @@ const ProjectPage = () => {
     videoUrl: '',
     serverUrl: '',
   });
-  const [jurySize, setJurySize] = useState(5);
+  const [jurySizes, setJurySizes] = useState({});
   const [finalGrades, setFinalGrades] = useState({});
 
   /**
@@ -141,8 +141,9 @@ const ProjectPage = () => {
     try {
       setError('');
       setSuccess('');
-      await selectJury(deliverableId, jurySize);
-      setSuccess(`${jurySize} jurați selectați`);
+      const size = jurySizes[deliverableId] || 5;
+      await selectJury(deliverableId, size);
+      setSuccess(`${size} jurați selectați`);
       loadProjects();
     } catch (err) {
       setError(err.response?.data?.message || 'Nu s-a putu aleje juriu');
@@ -331,8 +332,11 @@ const ProjectPage = () => {
                                     type="number"
                                     min="1"
                                     max="20"
-                                    value={jurySize}
-                                    onChange={(e) => setJurySize(Math.max(1, parseInt(e.target.value) || 1))}
+                                    value={jurySizes[deliverable.id] || 5}
+                                    onChange={(e) => setJurySizes(prev => ({
+                                      ...prev,
+                                      [deliverable.id]: Math.max(1, parseInt(e.target.value) || 1)
+                                    }))}
                                     style={{ width: '80px', padding: '5px' }}
                                   />
                                 </div>
