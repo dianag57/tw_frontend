@@ -265,6 +265,7 @@ const ProjectPage = () => {
                       {project.Deliverables.map(deliverable => {
                         const daysUntilDeadline = Math.ceil((new Date(deliverable.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
                         const isDeadlineClose = daysUntilDeadline <= 3 && daysUntilDeadline > 0;
+                        const isDeadlinePassed = daysUntilDeadline < 0;
                         
                         return (
                         <div key={deliverable.id} className="deliverable-item">
@@ -272,7 +273,8 @@ const ProjectPage = () => {
                           <p><strong>Stare:</strong> {deliverable.status}</p>
                           <p>
                             <strong>Scadenţă:</strong> {formatDate(deliverable.dueDate)}
-                            {isDeadlineClose && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
+                            {isDeadlinePassed && <span style={{color: '#d63031', marginLeft: '0.5rem', fontWeight: 'bold'}}>❌ Deadline a expirat!</span>}
+                            {isDeadlineClose && !isDeadlinePassed && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
                           </p>
                           {deliverable.description && <p><strong>Descriere:</strong> {deliverable.description}</p>}
                           {deliverable.videoUrl && (
@@ -282,7 +284,7 @@ const ProjectPage = () => {
                             <p><strong>Server:</strong> <a href={deliverable.serverUrl} target="_blank" rel="noopener noreferrer">{deliverable.serverUrl}</a></p>
                           )}
                           <div className="deliverable-actions">
-                            {deliverable.status === 'pending' && (
+                            {deliverable.status === 'pending' && !isDeadlinePassed && (
                               <button
                                 className="btn btn-primary"
                                 onClick={() => {
@@ -299,6 +301,19 @@ const ProjectPage = () => {
                               >
                                 Adaugă media
                               </button>
+                            )}
+                            {isDeadlinePassed && (
+                              <div style={{
+                                padding: '10px',
+                                backgroundColor: '#ffe0e0',
+                                borderLeft: '4px solid #d63031',
+                                marginTop: '10px',
+                                borderRadius: '4px',
+                                color: '#d63031',
+                                fontWeight: '500'
+                              }}>
+                                ❌ Deadline a expirat - nu mai puteți edita această livrare!
+                              </div>
                             )}
                             {deliverable.status === 'pending' && (
                               <button

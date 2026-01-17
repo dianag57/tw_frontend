@@ -105,6 +105,7 @@ const JuryPage = () => {
           {assignments.map(assignment => {
             const daysUntilDeadline = Math.ceil((new Date(assignment.deliverable?.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
             const isDeadlineClose = daysUntilDeadline <= 3 && daysUntilDeadline > 0;
+            const isDeadlinePassed = daysUntilDeadline < 0;
             
             return (
             <div key={assignment.id} className="assignment-card card">
@@ -114,7 +115,8 @@ const JuryPage = () => {
                   <p><strong>Titlu:</strong> {assignment.deliverable?.title}</p>
                   <p>
                     <strong>Deadline:</strong> {formatDate(assignment.deliverable?.dueDate)}
-                    {isDeadlineClose && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
+                    {isDeadlinePassed && <span style={{color: '#d63031', marginLeft: '0.5rem', fontWeight: 'bold'}}>❌ Deadline a expirat!</span>}
+                    {isDeadlineClose && !isDeadlinePassed && <span style={{color: '#ff6b6b', marginLeft: '0.5rem'}}>⚠️ Deadline is close!</span>}
                   </p>
                   <span className={`status status-${assignment.status}`}>
                     {assignment.status === 'assigned' ? 'În Așteptare Evaluare' : 'Evaluat'}
@@ -152,6 +154,19 @@ const JuryPage = () => {
 
                   <div className="evaluation-form-section">
                     <h3>Trimite evaluare</h3>
+                    {isDeadlinePassed && (
+                      <div style={{
+                        padding: '10px',
+                        backgroundColor: '#ffe0e0',
+                        borderLeft: '4px solid #d63031',
+                        marginBottom: '10px',
+                        borderRadius: '4px',
+                        color: '#d63031',
+                        fontWeight: '500'
+                      }}>
+                        ❌ Deadline a expirat - nu mai puteți trimite evaluări!
+                      </div>
+                    )}
                     <form onSubmit={handleSubmitEvaluation}>
                       <div className="form-group">
                         <label htmlFor="score">Nota (1-10)</label>
@@ -165,6 +180,7 @@ const JuryPage = () => {
                             value={evaluationForm.score}
                             onChange={(e) => setEvaluationForm({ ...evaluationForm, score: parseFloat(e.target.value) || '' })}
                             required
+                            disabled={isDeadlinePassed}
                             placeholder="8.5"
                           />
                           <span className="score-display">
@@ -183,11 +199,12 @@ const JuryPage = () => {
                           id="feedback"
                           value={evaluationForm.feedback}
                           onChange={(e) => setEvaluationForm({ ...evaluationForm, feedback: e.target.value })}
+                          disabled={isDeadlinePassed}
                           placeholder="Furnizează feedback constructiv pentru echipă..."
                         ></textarea>
                       </div>
 
-                      <button type="submit" className="btn btn-success">
+                      <button type="submit" className="btn btn-success" disabled={isDeadlinePassed}>
                         Trimite evaluare
                       </button>
                     </form>
