@@ -17,9 +17,7 @@ const ProfessorPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [expandedProject, setExpandedProject] = useState(null);
-  const [expandedDeliverable, setExpandedDeliverable] = useState(null);
   const [evaluationData, setEvaluationData] = useState({});
-  const [statsData, setStatsData] = useState({});
 
   /**
    * Load all projects on mount
@@ -60,34 +58,6 @@ const ProfessorPage = () => {
       setError('Failed to load evaluations');
     }
   };
-
-  /**
-   * Load statistics for a deliverable
-   */
-  const handleLoadStats = async (deliverableId) => {
-    try {
-      setError('');
-      const data = await getDeliverableStats(deliverableId);
-      setStatsData(prev => ({
-        ...prev,
-        [deliverableId]: data,
-      }));
-    } catch (err) {
-      setError('Failed to load statistics');
-    }
-  };
-
-  /**
-   * Render score distribution chart
-   */
-  const renderScoreDistribution = (scores) => {
-    const distribution = {};
-    scores.forEach(score => {
-      const rounded = Math.round(score);
-      distribution[rounded] = (distribution[rounded] || 0) + 1;
-    });
-
-    return (
       <div className="score-distribution">
         {Object.keys(distribution)
           .sort((a, b) => a - b)
