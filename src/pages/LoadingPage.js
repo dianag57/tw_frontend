@@ -1,7 +1,3 @@
-/**
- * Loading Page Component
- */
-
 import React from 'react';
 
 const LoadingPage = () => {
