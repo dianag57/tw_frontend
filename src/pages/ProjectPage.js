@@ -346,13 +346,15 @@ const ProjectPage = () => {
                                 >
                                   Selectează juriul
                                 </button>
-                                <button
-                                  className="btn btn-info"
-                                  onClick={() => handleGetFinalGrade(deliverable.id)}
-                                >
-                                  Vezi Nota
-                                </button>
                               </>
+                            )}
+                            {deliverable.status === 'open_for_grading' && (
+                              <button
+                                className="btn btn-info"
+                                onClick={() => handleGetFinalGrade(deliverable.id)}
+                              >
+                                Vezi Nota
+                              </button>
                             )}
                           </div>
 
